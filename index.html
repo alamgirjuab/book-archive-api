@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Archive</title>
+    <!---------------- 
+     | Bootstrap css |
+     ---------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!---------------- 
+     |   Header Area |
+     ---------------->
+    <header class="container bg-light">
+        <div class="row">
+            <div class="col-lg-3">
+                <img class="img-fluid w-75" src="img/logo.svg" alt="">
+            </div>
+            <div class="col-lg-9">
+                <h1 class="mt-2 ms-5">Welcome to Book Archive</h1>
+            </div>
+        </div>
+        <!---------------- 
+         |   Search Area |
+         ---------------->
+        <div class="input-group my-3 py-5 w-50 mx-auto">
+            <input id="search-input" type="text" class="form-control" placeholder="Search book here"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button">Search</button>
+
+        </div>
+        <div id="loding" class="w-50 mx-auto loding">
+            <h3>Data is loding, please wait...</h3>
+        </div>
+        <div id="total-result-found" class="w-50 mx-auto display">
+            <h3>Total <span id="total-search-number">0000</span> books found and 20 displaying</h3>
+        </div>
+        </div>
+    </header>
+    <main class="container">
+        <!-- <h2 class="text-center d-none mb-5">Total <span id="total-search-result">000000</span> Books Found</h2> -->
+        <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 mt-5 bg-light">
+
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <!---------------- 
+     | Bootstrap js |
+     ---------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!---------------- 
+     | Custom js |
+     ---------------->
+    <script src="js/book-archive.js"></script>
+</body>
+
+</html>

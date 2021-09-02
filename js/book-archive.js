@@ -7,6 +7,10 @@ const totalSearchFound = search => {
     document.getElementById('total-result-found').style.display = search;
 }
 
+const searchEmpty = empty => {
+    document.getElementById('empty').style.display = empty;
+}
+
 const loadData = () => {
     const searchText = document.getElementById('search-input');
     const search = searchText.value;
@@ -14,10 +18,11 @@ const loadData = () => {
     searchText.value = '';
     // Check empty string
     if (search === '') {
-        alert('searchbox is empty');
+        searchEmpty('block');
     }
     else {
         //Show loding...
+        searchEmpty('none');
         displayLoding('block');
         totalSearchFound('none');
 

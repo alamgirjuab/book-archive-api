@@ -33,8 +33,8 @@ const loadData = () => {
     }
     else {
         searchEmpty('none');
-        displayLoding('block');
         totalSearchFound('none');
+        displayLoding('block');
         /*---------------
          | fetching url |
          --------------*/
@@ -52,7 +52,7 @@ const loadData = () => {
 const displayData = (books) => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
-
+    console.log(books);
     /*-------------------------------------------
      | Showing only 20 results by slice funcion |
      ------------------------------------------*/
@@ -69,6 +69,7 @@ const displayData = (books) => {
                 <div class="card-body">
                     <h5 class="card-title">Book title: ${book.title}</h5>
                     <h5 class="card-title">Book authors: ${book.author_name}</h5>
+                    <h5 class="card-title">Publisher: ${book.publisher}</h5>
                     <h5 class="card-title">First Publish Year: ${book.first_publish_year}</h5>
                 </div>
             </div>
@@ -83,6 +84,7 @@ const displayData = (books) => {
     totalSearchFound('block');
     const totalSearchNumber = document.getElementById('total-search-number');
     totalSearchNumber.innerText = books.numFound;
+
 }
 
 /*------------------------------------

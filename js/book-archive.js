@@ -12,11 +12,18 @@ const totalSearchFound = search => {
     document.getElementById('total-result-found').style.display = search;
 }
 
-/*------------------------------------------------------
- | Total search result notification show/hide function |
- -----------------------------------------------------*/
+/*-----------------------------------------------
+ | Empty search notification show/hide function |
+ ----------------------------------------------*/
 const searchEmpty = empty => {
     document.getElementById('empty').style.display = empty;
+}
+
+/*------------------------------------------------
+ | No Data Found notification show/hide function |
+ -----------------------------------------------*/
+const noDataFound = noData => {
+    document.getElementById('no-result-found').style.display = noData;
 }
 
 const loadData = () => {
@@ -29,16 +36,18 @@ const loadData = () => {
      --------------------*/
     if (search === '') {
         totalSearchFound('none');
+        noDataFound('none');
         searchEmpty('block');
     }
     else {
         searchEmpty('none');
         totalSearchFound('none');
+        noDataFound('none');
         displayLoding('block');
         /*---------------
          | fetching url |
          --------------*/
-        const url = `http://openlibrary.org/search.json?q=${search}`
+        const url = `https://openlibrary.org/search.json?q=${search}`
         fetch(url)
             .then(res => res.json())
             .then(data => displayData(data));
@@ -52,7 +61,6 @@ const loadData = () => {
 const displayData = (books) => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
-    console.log(books);
     /*-------------------------------------------
      | Showing only 20 results by slice funcion |
      ------------------------------------------*/
@@ -81,9 +89,14 @@ const displayData = (books) => {
      | Total numbers of search result display |
      ----------------------------------------*/
     displayLoding('none');
-    totalSearchFound('block');
-    const totalSearchNumber = document.getElementById('total-search-number');
-    totalSearchNumber.innerText = books.numFound;
+    if (books.numFound === 0) {
+        noDataFound('block');
+    }
+    else {
+        const totalSearchNumber = document.getElementById('total-search-number');
+        totalSearchNumber.innerText = books.numFound;
+        totalSearchFound('block');
+    }
 
 }
 

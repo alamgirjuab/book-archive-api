@@ -1,3 +1,6 @@
+/*--------------------------------------- 
+ | Notification custom dispaly none css |
+ --------------------------------------*/
 .display, .loding, .empty, .no-result-found{
     display: none;
 }

@@ -1,12 +1,20 @@
+/*-----------------------------------------------
+ | Delay loding notification show/hide function |
+ ----------------------------------------------*/
 const displayLoding = lodingData => {
     document.getElementById('loding').style.display = lodingData;
-    // displayLoding.style.display = 'block';
 }
 
+/*------------------------------------------------------
+ | Total search result notification show/hide function |
+ -----------------------------------------------------*/
 const totalSearchFound = search => {
     document.getElementById('total-result-found').style.display = search;
 }
 
+/*------------------------------------------------------
+ | Total search result notification show/hide function |
+ -----------------------------------------------------*/
 const searchEmpty = empty => {
     document.getElementById('empty').style.display = empty;
 }
@@ -14,19 +22,22 @@ const searchEmpty = empty => {
 const loadData = () => {
     const searchText = document.getElementById('search-input');
     const search = searchText.value;
-    // console.log(search);
     searchText.value = '';
-    // Check empty string
+
+    /*---------------------
+     | Check empty string |
+     --------------------*/
     if (search === '') {
+        totalSearchFound('none');
         searchEmpty('block');
     }
     else {
-        //Show loding...
         searchEmpty('none');
         displayLoding('block');
         totalSearchFound('none');
-
-        //fetching url
+        /*---------------
+         | fetching url |
+         --------------*/
         const url = `http://openlibrary.org/search.json?q=${search}`
         fetch(url)
             .then(res => res.json())
@@ -35,20 +46,21 @@ const loadData = () => {
 
 }
 
+/*---------------------------------------
+ | Display search result in the website |
+ --------------------------------------*/
 const displayData = (books) => {
-    // console.log(books);
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+
+    /*-------------------------------------------
+     | Showing only 20 results by slice funcion |
+     ------------------------------------------*/
     const show20 = books.docs.slice(0, 20);
-    console.log(show20);
     if (!show20) {
         alert('worng input')
     }
     show20?.forEach(book => {
-        // console.log(book.title);
-        // console.log(book.author_name);
-        // console.log(book.first_publish_year);
-        // console.log(book.cover_i);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -63,37 +75,19 @@ const displayData = (books) => {
         `;
         searchResult.appendChild(div);
     })
-    // totalSearchFound('d-block');
+
+    /*-----------------------------------------
+     | Total numbers of search result display |
+     ----------------------------------------*/
     displayLoding('none');
     totalSearchFound('block');
     const totalSearchNumber = document.getElementById('total-search-number');
     totalSearchNumber.innerText = books.numFound;
 }
 
+/*------------------------------------
+ | Search button click event handler |
+ -----------------------------------*/
 document.getElementById('button').addEventListener('click', function () {
     loadData();
 })
-
-
-
-
-
-
-
-
-
-
-
-/*
-    const totalSearchResult = document.getElementById('total-search-result');
-    totalSearchResult.innerText = books.numFound;
-    console.log('Total', books.numFound, 'data found.');
-    const displayTotal = document.getElementById('total-result-found');
-    if (displayTotal.style.display === 'd-none') {
-        displayTotal.style.display = 'd-block';
-    } else {
-        displayTotal.style.display = 'd-none';
-    }
-    const t = document.createTextNode(`Total ${books.numFound} Books Found`);
-    totalResultFound.style.display = 'block';
-    totalResultFound.appendChild(t); */

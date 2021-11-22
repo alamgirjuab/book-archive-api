@@ -75,10 +75,10 @@ const displayData = (books) => {
             <div class="card h-100">
                 <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Book title: ${book.title}</h5>
-                    <h5 class="card-title">Book authors: ${book.author_name}</h5>
-                    <h5 class="card-title">Publisher: ${book.publisher}</h5>
-                    <h5 class="card-title">First Publish Year: ${book.first_publish_year}</h5>
+                    <p class="card-title"><span class="fw-bold">Book title:</span> ${book.title}</p>
+                    <p class="card-title"><span class="fw-bold">Book authors:</span> ${book.author_name}</p>
+                    <p class="card-title"><span class="fw-bold">Publisher:</span> ${book.publisher}</p>
+                    <p class="card-title"><span class="fw-bold">First Publish Year:</span> ${book.first_publish_year}</p>
                 </div>
             </div>
         `;
